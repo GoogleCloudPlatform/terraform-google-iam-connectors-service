@@ -15,7 +15,7 @@
  */
 
 module "iam_connector" {
-  source = "Daisyprakash/iam-connectors-service/google"
+  source = "../.."
 
   project_id          = var.project_id
   connector_id        = var.connector_id
