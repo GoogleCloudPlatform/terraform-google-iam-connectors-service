@@ -21,6 +21,6 @@ output "project_id" {
 
 output "id" {
   description = "The ID of the created IAM connector."
-  value       = module.iam_connector.id
+  value       = module.iam_connector.connector_id
 }
 

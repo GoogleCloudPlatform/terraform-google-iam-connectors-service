@@ -19,7 +19,7 @@ variable "project_id" {
   type        = string
 }
 
-variable "connector_id"{
-  description ="Id of the connector"
-  type = string
+variable "connector_id" {
+  description = "Id of the connector"
+  type        = string
 }
