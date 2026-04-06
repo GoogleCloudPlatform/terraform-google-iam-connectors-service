@@ -28,8 +28,8 @@ func TestSimpleExample(t *testing.T) {
 		example.DefaultVerify(assert)
 
 		connectorID := example.GetStringOutput("id")
-    	assert.NotEmpty(connectorID, "Connector ID should not be empty")
-		
+		assert.NotEmpty(connectorID, "Connector ID should not be empty")
+
 		// skipping this part of the test of verifying the connector details through gcloud command since the API is not available in cft/developer-tools docker Image.
 		// projectID := example.GetStringOutput("project_id")
 		// location := "us-central1"
