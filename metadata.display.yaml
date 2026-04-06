@@ -22,7 +22,7 @@ spec:
   info:
     title: terraform-google-iam-connectors-service
     source:
-      repo: https://github.com/Daisyprakash/terraform-google-iam_connector.git
+      repo: https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service.git
       sourceType: git
   ui:
     input:
