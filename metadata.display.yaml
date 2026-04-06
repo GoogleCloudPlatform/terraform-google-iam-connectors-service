@@ -1,0 +1,66 @@
+# Copyright 2026 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-iam_connector-display
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: terraform-google-iam-connectors-service
+    source:
+      repo: https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service.git
+      sourceType: git
+  ui:
+    input:
+      variables:
+        allowed_scopes:
+          name: allowed_scopes
+          title: Allowed Scopes
+        api_key_params:
+          name: api_key_params
+          title: Api Key Params
+        blocked_scopes:
+          name: blocked_scopes
+          title: Blocked Scopes
+        connector_id:
+          name: connector_id
+          title: Connector Id
+        description:
+          name: description
+          title: Description
+        ge_connector_params:
+          name: ge_connector_params
+          title: Ge Connector Params
+        location:
+          name: location
+          title: Location
+        project_id:
+          name: project_id
+          title: Project Id
+        state:
+          name: state
+          title: State
+        three_legged_oauth_params:
+          name: three_legged_oauth_params
+          title: Three Legged Oauth Params
+        two_legged_oauth_params:
+          name: two_legged_oauth_params
+          title: Two Legged Oauth Params
+    runtime:
+      outputs:
+        connector_id:
+          visibility: VISIBILITY_ROOT

@@ -1,0 +1,127 @@
+# Copyright 2026 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-iam_connector
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: terraform-google-iam-connectors-service
+    source:
+      repo: https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service.git
+      sourceType: git
+    version: 0.0.1
+    actuationTool:
+      flavor: Terraform
+      version: ">= 1.3"
+    description:
+      tagline: This is an auto-generated module.
+      detailed: "This module was generated from "
+      preDeploy: To deploy this blueprint you must have an active billing account and billing permissions.
+    icon: assets/icon.png
+    costEstimate:
+      description: Blueprint cost details
+      url: https://cloud.google.com/products/calculator?id=02fb0c45-cc29-4567-8cc6-f72ac9024add
+  content:
+    architecture:
+      diagramUrl: https://www.link-to-architecture-diagram.com
+      description:
+        - 1. Architecture description step no. 1
+        - 2. Architecture description step no. 2
+        - 3. Architecture description step no. N
+    documentation:
+      - title: Hosting a Static Website
+        url: https://cloud.google.com/storage/docs/hosting-static-website
+    examples:
+      - name: simple_example
+        location: examples/simple_example
+  interfaces:
+    variables:
+      - name: project_id
+        description: The ID of the project to create the connector in.
+        varType: string
+        required: true
+      - name: location
+        description: The location of the resource.
+        varType: string
+        required: true
+      - name: connector_id
+        description: The name of the connector.
+        varType: string
+        required: true
+      - name: description
+        description: The description of the resource.
+        varType: string
+      - name: allowed_scopes
+        description: List of scopes that are allowed to be requested for this connector.
+        varType: list(string)
+        defaultValue: []
+      - name: blocked_scopes
+        description: List of scopes that are blocked from being requested for this connector.
+        varType: list(string)
+        defaultValue: []
+      - name: api_key_params
+        description: API Key connector type parameters.
+        varType: |-
+          object({
+              api_key = string
+            })
+      - name: three_legged_oauth_params
+        description: Three-legged OAuth connector type parameters.
+        varType: |-
+          object({
+              client_id         = string
+              client_secret     = string
+              authorization_url = string
+              token_url         = string
+            })
+      - name: two_legged_oauth_params
+        description: Two-legged OAuth connector type parameters.
+        varType: |-
+          object({
+              client_id      = string
+              client_secret  = string
+              token_endpoint = string
+            })
+      - name: ge_connector_params
+        description: Gemini Enterprise connector type parameters. Set to an empty object to enable.
+        varType: any
+      - name: state
+        description: The state of the connector. Can be ENABLED or DISABLED.
+        varType: string
+        defaultValue: ENABLED
+    outputs:
+      - name: connector
+        description: The created IAM connector.
+      - name: connector_id
+        description: The ID of the created IAM connector.
+  requirements:
+    roles:
+      - level: Project
+        roles:
+          - roles/connectors.admin
+          - roles/iam.serviceAccountUser
+          - roles/connector.credentialsUser
+          - roles/secretmanager.secretAccessor
+          - roles/iamconnectors.admin
+    services:
+      - iamconnectors.googleapis.com
+      - iamconnectorcredentials.googleapis.com
+      - secretmanager.googleapis.com
+    providerVersions:
+      - source: hashicorp/google-nightly
+        version: 2026.3.23-0.0.3
