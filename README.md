@@ -138,7 +138,6 @@ This section outlines the prerequisites and requirements needed to use this modu
 The service account used to provision this module requires the following IAM roles:
 - **IAM Connectors Admin**: `roles/iamconnectors.admin`
 - **Service Account User**: `roles/iam.serviceAccountUser`
-- **Connector Credentials User**: `roles/connector.credentialsUser`
 - **Secret Manager Secret Accessor**: `roles/secretmanager.secretAccessor`
 - **Connector Admin**: `roles/connectors.admin`
 

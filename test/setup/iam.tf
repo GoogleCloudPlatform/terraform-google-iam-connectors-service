@@ -18,7 +18,6 @@ locals {
   int_required_roles = [
     "roles/connectors.admin",
     "roles/iam.serviceAccountUser",
-    "roles/connector.credentialsUser",
     "roles/secretmanager.secretAccessor",
     "roles/iamconnectors.admin"
   ]
