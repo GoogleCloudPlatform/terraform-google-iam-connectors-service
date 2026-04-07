@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service/compare/v0.1.0...v0.1.1) (2026-04-07)
+
+
+### Bug Fixes
+
+* remove non required roles and api ([ea13455](https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service/commit/ea134551a4c2774b47b2d086c0f3a3105bf7eaa2))
+
 ## 0.1.0 (2026-04-07)
 
 
