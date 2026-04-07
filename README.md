@@ -1,52 +1,152 @@
 # terraform-google-iam-connectors-service
 
 ## Description
-### Tagline
-This is an auto-generated module.
 
-### Detailed
-This module was generated from [terraform-google-module-template](https://github.com/terraform-google-modules/terraform-google-module-template/), which by default generates a module that simply creates a GCS bucket. As the module develops, this README should be updated.
+Terraform module for managing Google Cloud IAM Connectors. This module provides a convenient way to create and configure IAM connectors with support for multiple authentication types including API Key, Three-legged OAuth, Two-legged OAuth, and Gemini Enterprise connectors.
 
-The resources/services/activations/deletions that this module will create/trigger are:
+~> **Warning:** All arguments including the following potentially sensitive
+values will be stored in the raw state as plain text: `connector_type_params.three_legged_oauth.client_secret`, `connector_type_params.two_legged_oauth.client_secret`, `connector_type_params.api_key.api_key`.
+[Read more about sensitive data in state](https://developer.hashicorp.com/terraform/language/manage-sensitive-data).
 
-- Create a GCS bucket with the provided name
+## Example Usage - IAM Connectors Connector Basic
 
-### PreDeploy
-To deploy this blueprint you must have an active billing account and billing permissions.
-
-## Architecture
-![alt text for diagram](https://www.link-to-architecture-diagram.com)
-1. Architecture description step no. 1
-2. Architecture description step no. 2
-3. Architecture description step no. N
-
-## Documentation
-- [Hosting a Static Website](https://cloud.google.com/storage/docs/hosting-static-website)
-
-## Deployment Duration
-Configuration: X mins
-Deployment: Y mins
-
-## Cost
-[Blueprint cost details](https://cloud.google.com/products/calculator?id=02fb0c45-cc29-4567-8cc6-f72ac9024add)
-
-## Usage
-
-Basic usage of this module is as follows:
+This example demonstrates how to create a basic IAM connector with API Key authentication.
 
 ```hcl
-module "iam_connector" {
-  source  = "terraform-google-modules/iam_connector/google"
-  version = "~> 0.1"
+resource "google_iam_connectors_connector" "default" {
+  location       = "europe-west4"
+  connector_id   = "connector"
 
-  project_id  = "<PROJECT ID>"
-  bucket_name = "gcs-test-bucket"
+  connector_type_params {
+    api_key {
+      api_key = "foobar"
+    }
+  }
+}
+```
+## Example Usage - IAM Connectors Connector Gemini Enterprise
+
+This example demonstrates how to create a Gemini Enterprise connector for advanced AI and automation integrations.
+
+```hcl
+resource "google_iam_connectors_connector" "default" {
+  location       = "europe-west4"
+  connector_id   = "connector"
+
+  connector_type_params {
+    ge_connector_params {}
+  }
+}
+```
+## Example Usage - IAM Connectors Connector Three Legged OAuth
+
+This example demonstrates how to create a connector with Three-legged OAuth authentication, enabling user-authorized access to third-party APIs.
+
+```hcl
+resource "google_iam_connectors_connector" "default" {
+  location       = "europe-west4"
+  connector_id   = "connector"
+
+  allowed_scopes = ["https://www.googleapis.com/auth/cloud-platform", "https://www.googleapis.com/auth/userinfo.email"]
+
+  connector_type_params {
+    three_legged_oauth {
+      client_id = "foo"
+      client_secret = "bar"
+      authorization_url = "baz"
+      token_url = "qux"
+    }
+  }
+}
+```
+## Example Usage - IAM Connectors Connector Two Legged OAuth
+
+This example demonstrates how to create a connector with Two-legged OAuth authentication for direct service-to-service communication.
+
+```hcl
+resource "google_iam_connectors_connector" "default" {
+  location       = "europe-west4"
+  connector_id   = "connector"
+
+  allowed_scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+  blocked_scopes = ["https://www.googleapis.com/auth/userinfo.email"]
+
+  connector_type_params {
+    two_legged_oauth {
+      client_id = "foo"
+      client_secret = "bar"
+      token_endpoint = "qux"
+    }
+  }
 }
 ```
 
-Functional examples are included in the
-[examples](./examples/) directory.
+## Timeouts
 
+The following timeout configuration options are available for managing resource creation, updates, and deletals:
+
+This resource provides the following
+[Timeouts](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/retries-and-customizable-timeouts) configuration options:
+
+- `create` - Default is 20 minutes.
+- `update` - Default is 20 minutes.
+- `delete` - Default is 20 minutes.
+
+## Import
+
+This section explains how to import existing IAM connectors into Terraform state. The connector can be imported using any of the accepted formats below:
+
+Connector can be imported using any of these accepted formats:
+
+* `projects/{{project}}/locations/{{location}}/services/{{connector_id}}`
+* `{{project}}/{{location}}/{{connector_id}}`
+* `{{location}}/{{connector_id}}`
+
+
+In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Connector using one of the formats above. For example:
+
+```tf
+import {
+  id = "projects/{{project}}/locations/{{location}}/services/{{connector_id}}"
+  to = google_iam_connectors_connector.default
+}
+```
+
+When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Connector can be imported using one of the formats above. For example:
+
+```
+$ terraform import google_iam_connectors_connector.default projects/{{project}}/locations/{{location}}/services/{{connector_id}}
+$ terraform import google_iam_connectors_connector.default {{project}}/{{location}}/{{connector_id}}
+$ terraform import google_iam_connectors_connector.default {{location}}/{{connector_id}}
+```
+
+## User Project Overrides
+
+This resource supports the User Project Override feature, which allows you to specify a different project for resource billing and quota tracking than the one configured in the provider.
+
+This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
+
+## Requirements
+
+This section outlines the prerequisites and requirements needed to use this module.
+
+### Software
+- [Terraform](https://www.terraform.io/downloads.html) v1.3.0+
+- [Terraform Provider for GCP](https://registry.terraform.io/providers/hashicorp/google/latest) v5.1.0+
+
+### Service Account Roles
+The service account used to provision this module requires the following IAM roles:
+- **IAM Connectors Admin**: `roles/iamconnectors.admin`
+- **Service Account User**: `roles/iam.serviceAccountUser`
+- **Connector Credentials User**: `roles/connector.credentialsUser`
+- **Secret Manager Secret Accessor**: `roles/secretmanager.secretAccessor`
+- **Connector Admin**: `roles/connectors.admin`
+
+### APIs
+The following APIs must be enabled in the target project:
+- **IAM Connectors API**: `iamconnectors.googleapis.com`
+- **IAM Connector Credentials API**: `iamconnectorcredentials.googleapis.com`
+- **Secret Manager API**: `secretmanager.googleapis.com`
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
@@ -72,49 +172,3 @@ Functional examples are included in the
 | connector\_id | The ID of the created IAM connector. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
-## Requirements
-
-These sections describe requirements for using this module.
-
-### Software
-
-The following dependencies must be available:
-
-- [Terraform][terraform] v0.13
-- [Terraform Provider for GCP][terraform-provider-gcp] plugin v3.0
-
-### Service Account
-
-A service account with the following roles must be used to provision
-the resources of this module:
-
-- Storage Admin: `roles/storage.admin`
-
-The [Project Factory module][project-factory-module] and the
-[IAM module][iam-module] may be used in combination to provision a
-service account with the necessary roles applied.
-
-### APIs
-
-A project with the following APIs enabled must be used to host the
-resources of this module:
-
-- Google Cloud Storage JSON API: `storage-api.googleapis.com`
-
-The [Project Factory module][project-factory-module] can be used to
-provision a project with the necessary APIs enabled.
-
-## Contributing
-
-Refer to the [contribution guidelines](./CONTRIBUTING.md) for
-information on contributing to this module.
-
-[iam-module]: https://registry.terraform.io/modules/terraform-google-modules/iam/google
-[project-factory-module]: https://registry.terraform.io/modules/terraform-google-modules/project-factory/google
-[terraform-provider-gcp]: https://www.terraform.io/docs/providers/google/index.html
-[terraform]: https://www.terraform.io/downloads.html
-
-## Security Disclosures
-
-Please see our [security disclosure process](./SECURITY.md).
