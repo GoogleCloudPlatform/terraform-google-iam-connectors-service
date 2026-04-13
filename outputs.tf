@@ -23,3 +23,8 @@ output "connector_id" {
   description = "The ID of the created IAM connector."
   value       = google_iam_connectors_connector.default.id
 }
+
+output "connector_self_link" {
+  description = "The full resource name of the created IAM connector."
+  value       = "projects/${google_iam_connectors_connector.default.project}/locations/${google_iam_connectors_connector.default.location}/connectors/${google_iam_connectors_connector.default.connector_id}"
+}

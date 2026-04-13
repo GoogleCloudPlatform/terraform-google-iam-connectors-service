@@ -93,6 +93,8 @@ spec:
         description: The created IAM connector.
       - name: connector_id
         description: The ID of the created IAM connector.
+      - name: connector_self_link
+        description: The full resource name of the created IAM connector.
   requirements:
     roles:
       - level: Project
@@ -106,4 +108,4 @@ spec:
       - secretmanager.googleapis.com
     providerVersions:
       - source: hashicorp/google-nightly
-        version: 0.1.1.0.3
+        version: 2026.3.23-0.0.3

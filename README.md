@@ -168,5 +168,6 @@ The following APIs must be enabled in the target project:
 |------|-------------|
 | connector | The created IAM connector. |
 | connector\_id | The ID of the created IAM connector. |
+| connector\_self\_link | The full resource name of the created IAM connector. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

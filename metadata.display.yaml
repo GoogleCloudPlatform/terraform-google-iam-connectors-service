@@ -64,3 +64,5 @@ spec:
       outputs:
         connector_id:
           visibility: VISIBILITY_ROOT
+        connector_self_link:
+          visibility: VISIBILITY_ROOT
