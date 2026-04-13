@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.2](https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service/compare/v0.1.1...v0.1.2) (2026-04-13)
+
+
+### Bug Fixes
+
+* added connector_self_link output variable ([a02548b](https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service/commit/a02548baaf736ab955bd6ebfd5d39105fdefbb86))
+* added connector_self_link output variable ([f2eba7d](https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service/commit/f2eba7d5f157ab199b095689d12cbfce54b6dd2f))
+
 ## [0.1.1](https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service/compare/v0.1.0...v0.1.1) (2026-04-07)
 
 

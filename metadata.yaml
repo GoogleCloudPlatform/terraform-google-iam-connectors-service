@@ -24,7 +24,7 @@ spec:
     source:
       repo: https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service.git
       sourceType: git
-    version: 0.1.1
+    version: 0.1.2
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
@@ -108,4 +108,4 @@ spec:
       - secretmanager.googleapis.com
     providerVersions:
       - source: hashicorp/google-nightly
-        version: 2026.3.23-0.0.3
+        version: 0.1.2.0.3
