@@ -15,7 +15,7 @@
  */
 
 module "iam_connector" {
-  source = "../.."
+  source = "vandnagarggoogle/iam-connectors-service/google"
 
   project_id          = var.project_id
   connector_id        = var.connector_id
