@@ -72,6 +72,7 @@ spec:
               client_secret     = string
               authorization_url = string
               token_url         = string
+              enable_pkce       = bool
             })
       - name: two_legged_oauth_params
         description: Two-legged OAuth connector type parameters.
@@ -108,4 +109,4 @@ spec:
       - secretmanager.googleapis.com
     providerVersions:
       - source: hashicorp/google-nightly
-        version: 0.1.2.0.3
+        version: 2026.3.23-0.0.3

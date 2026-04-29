@@ -62,6 +62,7 @@ variable "three_legged_oauth_params" {
     client_secret     = string
     authorization_url = string
     token_url         = string
+    enable_pkce       = bool
   })
   default = null
 }

@@ -41,6 +41,7 @@ resource "google_iam_connectors_connector" "default" {
           client_secret     = three_legged_oauth.value.client_secret
           authorization_url = three_legged_oauth.value.authorization_url
           token_url         = three_legged_oauth.value.token_url
+          enable_pkce       = three_legged_oauth.value.enable_pkce
         }
       }
       dynamic "two_legged_oauth" {
