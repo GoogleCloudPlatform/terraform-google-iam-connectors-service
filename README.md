@@ -159,7 +159,7 @@ The following APIs must be enabled in the target project:
 | location | The location of the resource. | `string` | n/a | yes |
 | project\_id | The ID of the project to create the connector in. | `string` | n/a | yes |
 | state | The state of the connector. Can be ENABLED or DISABLED. | `string` | `"ENABLED"` | no |
-| three\_legged\_oauth\_params | Three-legged OAuth connector type parameters. | <pre>object({<br>    client_id         = string<br>    client_secret     = string<br>    authorization_url = string<br>    token_url         = string<br>  })</pre> | `null` | no |
+| three\_legged\_oauth\_params | Three-legged OAuth connector type parameters. | <pre>object({<br>    client_id         = string<br>    client_secret     = string<br>    authorization_url = string<br>    token_url         = string<br>    enable_pkce       = bool<br>  })</pre> | `null` | no |
 | two\_legged\_oauth\_params | Two-legged OAuth connector type parameters. | <pre>object({<br>    client_id      = string<br>    client_secret  = string<br>    token_endpoint = string<br>  })</pre> | `null` | no |
 
 ## Outputs
