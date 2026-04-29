@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service/compare/v0.1.2...v0.2.0) (2026-04-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* adding enable_pkce
+
+### Features
+
+* adding enable_pkce ([dfcf543](https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service/commit/dfcf543bdf5c5503ce03d76e16ffa688c3fe2ea3))
+
 ## [0.1.2](https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service/compare/v0.1.1...v0.1.2) (2026-04-13)
 
 

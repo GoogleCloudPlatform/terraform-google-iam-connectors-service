@@ -25,6 +25,6 @@ terraform {
 
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/iam_connector/v0.1.2"
+    module_name = "blueprints/terraform/iam_connector/v0.2.0"
   }
 }
