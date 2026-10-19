@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service/compare/v0.2.0...v0.2.1) (2026-10-19)
+
+
+### Bug Fixes
+
+* populate null defaultValue in iam-connector blueprint metadata ([f2035ac](https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service/commit/f2035ac9d4faab5e927b3e0e8dfb93b8b8e75b83))
+* populate null defaultValue in iam-connector blueprint metadata ([2824173](https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service/commit/2824173a3385a10bd67728cff2464a63caf112b7))
+
 ## [0.2.0](https://github.com/GoogleCloudPlatform/terraform-google-iam-connectors-service/compare/v0.1.2...v0.2.0) (2026-04-29)
 
 
